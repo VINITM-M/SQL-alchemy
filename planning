@@ -1,0 +1,50 @@
+Phase 1: API foundations
+
+API design
+REST conventions, status codes
+Error handling and standard responses
+API versioning
+API documentation (Swagger/OpenAPI)
+Request validation (Pydantic)
+Async/await and concurrency
+
+Phase 2: Data layer
+
+SQLAlchemy
+Pagination and databases
+Reading and retrieval (queries, filtering, sorting, fetching data efficiently)
+
+Phase 3: Performance
+
+Redis and caching
+Caching the retrieval and paginated endpoints from Phase 2
+
+Phase 4: Identity and access
+
+Sessions and cookies
+Authentication and authorization, end to end
+Login module implementation (the project that ties 8 and 9 together)
+
+Phase 5: Quality and safety
+
+Testing
+Unit and integration tests (pytest)
+Mocking
+Test coverage
+Security beyond auth
+OWASP Top 10 (SQL injection, XSS, etc.)
+HTTPS/TLS, CORS
+Input sanitization
+
+Phase 6: Running it in production
+
+Observability
+Logging
+Monitoring and metrics
+Error tracking (Sentry)
+Deployment and DevOps
+Environment configs and secrets management
+Gunicorn/Uvicorn and Nginx
+Docker and Docker Compose
+CI/CD pipelines (GitHub Actions)
+Cloud basics (AWS/GCP/Azure)
