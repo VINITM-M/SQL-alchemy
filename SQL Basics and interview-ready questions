@@ -1,0 +1,30 @@
+Primary key vs unique constraint 
+
+
+PRIMARY KEY	UNIQUE
+Nulls allowed?	❌ No (must always have a value)	✅ Yes (one NULL allowed)
+Per table limit	Only 1 primary key	Many unique columns allowed
+Auto-increment?	Commonly used with AUTO_INCREMENT	Rarely auto-increment
+Index?	✅ Always creates an index	✅ Always creates an index
+Purpose	Identifies the row (the "ID")	Prevents duplicate values 
+
+id          INTEGER PRIMARY KEY,   -- one per table, no NULLs
+    email       VARCHAR(255) UNIQUE,   -- no duplicate emails, but can be NULL
+
+Why Only One PRIMARY KEY Per Table
+The primary key's job is to uniquely identify a row. If you had two primary keys, the database wouldn't know which one is "the" identifier for the row.
+
+The Real Reason (Technical)
+Reason	Explanation
+Unambiguous identity	A row must have exactly ONE way to be identified. Two PKs = two ways = confusion.
+Internal indexing	The DB uses the PK as the row locator (like a phone book's index). It can only use one column as that index.
+Foreign keys reference it	Other tables point to YOUR PK. If you had two, which one do they reference?
+SQL standard	The SQL spec defines PK as a single constraint on a column set, not multiple independent constraints.
+
+What You CAN Do Instead
+If you need two columns together to be unique:
+
+-- Composite primary key (still counts as ONE primary key)
+PRIMARY KEY (student_id, course_id)
+
+This is one primary key made of two columns — the combination is unique, not each column individually.
