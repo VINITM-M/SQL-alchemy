@@ -114,7 +114,70 @@ print(student.fees)  # ← Access fees through student
 
 ---
 
-![Uploading image.png…]()
+Understanding Base.metadata.create_all(engine)
+Syntax
+Base.metadata.create_all(engine)
+Base
+Base = declarative_base()
+Base is the parent class for all SQLAlchemy ORM models.
+
+All model classes inherit from Base:
+
+class USERS(Base):
+    pass
+
+class APIKey(Base):
+    pass
+Base keeps track of all registered model definitions.
+
+metadata
+metadata stores the schema information of all registered models, including:
+
+Table names
+Column names
+Data types
+Primary Keys
+Foreign Keys
+Constraints
+Indexes
+Relationships
+It acts as a collection of table definitions.
+
+create_all()
+Base.metadata.create_all()
+Reads all table definitions stored in Base.metadata and generates the corresponding SQL CREATE TABLE statements.
+
+If a table already exists, SQLAlchemy will not recreate it.
+
+engine
+engine = create_engine(DATABASE_URL)
+engine represents the database connection.
+
+It is used by SQLAlchemy to execute the generated SQL statements against the database.
+
+What Happens Internally?
+When models are defined:
+
+class USERS(Base):
+    __tablename__ = "users"
+
+class APIKey(Base):
+    __tablename__ = "api_keys"
+SQLAlchemy stores their schema information inside:
+
+Base.metadata
+When:
+
+Base.metadata.create_all(engine)
+is executed, SQLAlchemy:
+
+Reads all model definitions from Base.metadata.
+Generates the required SQL CREATE TABLE statements.
+Executes those statements through the provided engine.
+Creates the tables in the database if they do not already exist.
+One-Line Explanation
+Base.metadata.create_all(engine)
+Tells SQLAlchemy to read all model definitions stored in Base.metadata and create the corresponding tables in the connected
 
 
 
