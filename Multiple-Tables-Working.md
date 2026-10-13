@@ -114,6 +114,21 @@ print(student.fees)  # ← Access fees through student
 
 ---
 
+### Understaing this below syntax
+
+Base.metadata.create_all(engine)
+
+base = declarative() 
+Base → Contains all model/table definitions registered through declarative_base().
+metadata → Stores the schema information (table names, columns, primary keys, foreign keys, constraints, relationships metadata).
+create_all() → Generates and executes SQL CREATE TABLE statements for all tables present in the metadata.
+engine → Database connection through which the SQL is executed.
+
+In one sentence:
+
+Base.metadata.create_all(engine) tells SQLAlchemy to read all model definitions stored in Base.metadata and create the corresponding tables in the connected database using engine if they do not already exist.
+
+
 ## 3. Inserting Data
 
 ### Insert Single Student with Multiple Fees
